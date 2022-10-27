@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实验一</title>
+</head>
+<body>
+    <form action="#" method="post">
+        <table>
+            <tr>
+                <td>姓名：</td>
+                <td><input type="text" placeholder="请输入你的姓名...."></td>
+            </tr>
+            <tr>
+                <td>年龄：</td>
+                <td>
+                    <input type="text" placeholder="请输入你的年龄....">
+                </td>
+            </tr>
+            <tr>
+                <td>性别：</td>
+                <td>
+                    <input type="radio" name="gender"><img src="images\male.jpg">男
+                    <input type="radio" name="gender"><img src="images\female.jpg">女
+                </td>
+            </tr>
+            <tr>
+                <td>生日：</td>
+                <td>
+                    <select name="year" id="year">
+                        <option value="">--请选择年份--</option>
+                        <option value="">--啥--</option>
+                        <option value="">--也--</option>
+                        <option value="">--没--</option>
+                        <option value="">--有--</option>
+                    </select>
+                    <select name="month" id="month">
+                        <option value="">--请选择月份--</option>
+                        <option value="">--啥--</option>
+                        <option value="">--也--</option>
+                        <option value="">--没--</option>
+                        <option value="">--有--</option>
+                    </select>
+                    <select name="day" id="day">
+                        <option value="">--请选择日期--</option>
+                        <option value="">--啥--</option>
+                        <option value="">--也--</option>
+                        <option value="">--没--</option>
+                        <option value="">--有--</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>爱好：</td>
+                <td>
+                    <input type="checkbox" value="read" name="hobby">阅读
+                    <input type="checkbox" value="run" name="hobby">跑步
+                    <input type="checkbox" value="swimming" name="hobby">游泳
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">个人介绍：</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <textarea cols="30" rows="10" placeholder="请输入你的个人介绍...."></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="checkbox">我同意信息录入
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="立即注册">
+                    <input type="reset" value="重置">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
