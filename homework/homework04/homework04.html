@@ -6,15 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第四次作业</title>
     <style>
+	* {
+	    margin: 0px;
+	    padding: 0px;
+	}
+	    
         div {
             height: 200px;
             width: 200px;
             position: relative;
             animation: action1 20s;
             animation-duration: 20s;
-	        animation-timing-function: linear;
-	        animation-iteration-count: infinite;
-	        animation-direction: normal;
+	    animation-timing-function: linear;
+	    animation-iteration-count: infinite;
+	    animation-direction: normal;
             animation-play-state: running;
 
             -webkit-animation-name: action1;
@@ -33,7 +38,7 @@
             100% {background: red; left: 0px; top: 0px;}
         }
 
-        @-webkit-keyframes action1 /* Safari and Chrome */
+        @-webkit-keyframes action1
         {
             0% {background: red; left: 0px; top: 0px;}
             25% {background: yellow; left: 200px; top: 0px;}
@@ -44,6 +49,6 @@
     </style>
 </head>
 <body>
-    <div></div>
+    <div>一个div</div>
 </body>
 </html>
