@@ -6,21 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第四次作业</title>
     <style>
-	* {
-	    margin: 0px;
-	    padding: 0px;
-	    height: 100%;
-	}
-	    
-        div {
+        html {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+        }
+
+        .container {
+            height: 300px;
+            width: 300px;
+            border: 1px dashed white;
+        }
+
+        .box {
             height: 100px;
             width: 100px;
             position: relative;
             animation-name: action1;
-            animation-duration: 10s;
-	    animation-timing-function: linear;
-	    animation-iteration-count: infinite;
-	    animation-direction: normal;
+            animation-duration: 5s;
+	        animation-timing-function: linear;
+	        animation-iteration-count: infinite;
+	        animation-direction: normal;
             animation-play-state: running;
         }
 
@@ -34,8 +44,8 @@
     </style>
 </head>
 <body>
-    <center>
-        <div></div>
-    </center>
+    <div class="container">
+        <div class="box"></div>
+    </div>
 </body>
 </html>
