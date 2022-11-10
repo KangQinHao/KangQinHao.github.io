@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第四次作业</title>
+    <style>
+        div {
+            height: 200px;
+            width: 200px;
+            position: relative;
+            animation: action1 20s;
+            animation-duration: 20s;
+	        animation-timing-function: linear;
+	        animation-iteration-count: infinite;
+	        animation-direction: normal;
+            animation-play-state: running;
+
+            -webkit-animation-name: action1;
+            -webkit-animation-duration: 20s;
+            -webkit-animation-timing-function: linear;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-direction: normal;
+            -webkit-animation-play-state: running;
+        }
+
+        @keyframes action1 {
+            0% {background: red; left: 0px; top: 0px;}
+            25% {background: yellow; left: 200px; top: 0px;}
+            50% {background: green; left: 200px; top: 200px;}
+            75% {background: purple; left: 0px; top: 200px;}
+            100% {background: red; left: 0px; top: 0px;}
+        }
+
+        @-webkit-keyframes action1 /* Safari and Chrome */
+        {
+            0% {background: red; left: 0px; top: 0px;}
+            25% {background: yellow; left: 200px; top: 0px;}
+            50% {background: green; left: 200px; top: 200px;}
+            75% {background: purple; left: 0px; top: 200px;}
+            100% {background: red; left: 0px; top: 0px;}
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>
