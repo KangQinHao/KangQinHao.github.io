@@ -31,10 +31,10 @@ window.onload = function() {
         console.log(reward);    // 在控制台输出
 
         if (typeof(reward) == Number) {
-            result.innerHTML = reward.toFixed(2);     // 输入正确，替换页面中的结果值
+            result.innerHTML = reward.toFixed(2);     // 输入合法，替换页面中的结果值
         }
         else {
-            result.innerHTML = reward;  // 当输入错误时，显示错误信息
+            result.innerHTML = reward;  // 当输入非法时，显示错误信息
         }
     }
 
