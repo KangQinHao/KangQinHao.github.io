@@ -30,7 +30,7 @@ window.onload = function() {
 
         console.log(reward);    // 在控制台输出
 
-        if (typeof(reward) == Number) {
+        if (!isNaN(reward)) {
             result.innerHTML = reward.toFixed(2);     // 输入合法，替换页面中的结果值
         }
         else {
