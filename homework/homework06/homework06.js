@@ -30,12 +30,16 @@ window.onload = function() {
 
         console.log(reward);    // 在控制台输出
 
-        if (!isNaN(reward)) {
-            result.innerHTML = reward.toFixed(2);     // 输入合法，替换页面中的结果值
-        }
-        else {
-            result.innerHTML = reward;  // 当输入非法时，显示错误信息
-        }
+        // 四舍五入保留两位小数
+//         if (!isNaN(reward)) {
+//             result.innerText = reward.toFixed(2);     // 输入合法，替换页面中的结果值
+//         }
+//         else {
+//             result.innerText = reward;  // 当输入非法时，显示错误信息
+//         }
+        
+        // 不四舍五入，直接输出
+        result.innerText = reward;
     }
 
     setInterval(count, 500);    // 设定自动执行
