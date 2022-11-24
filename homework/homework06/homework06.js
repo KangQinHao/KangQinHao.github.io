@@ -32,10 +32,10 @@ window.onload = function() {
             result.innerHTML = reward;  // 当输入非法时，显示错误信息
         } else {
             // 不四舍五入
-            result.innerText = reward + "元";
+            // result.innerText = reward + "元";     // 输入合法，替换页面中的结果值
 
             // 四舍五入
-            // result.innerHTML = reward.toFixed(2) + "元";     // 输入合法，替换页面中的结果值
+            result.innerHTML = reward.toFixed(2) + "元";     // 输入合法，替换页面中的结果值
         }
     }
 
