@@ -12,6 +12,7 @@ window.onload = function() {
     var timerCount = 0;     // 计时器计数，以秒为单位
     var countDownCount;     // 番茄时钟计数
     var countH = 0, countM = 20, countS = 0;     // 番茄时钟时、分、秒设定值
+    var weekArray = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];     // 存储星期的数组
     var refDate;    // 存储参考时间的变量
 
     window.addEventListener("selectstart", function(e) {e.preventDefault();})  // 整个页面禁止选中，提升使用体验
@@ -31,7 +32,7 @@ window.onload = function() {
     // 设定页面中显示日期的元素
     function setDate() {
         refDate = new Date();
-        windowDate.innerText = refDate.getFullYear() + "年" + (refDate.getMonth() + 1) + "月"+ refDate.getDate() + "日";
+        windowDate.innerText = refDate.getFullYear() + "年" + (refDate.getMonth() + 1) + "月"+ refDate.getDate() + "日" + "  " + weekArray[refDate.getDay()];
     }
 
     // 计时器的函数：开始和暂停
