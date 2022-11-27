@@ -1,26 +1,26 @@
 window.onload = function() {
     const timer = document.getElementById("timer");   // 获取计时器元素
-    const countDown = document.getElementById("countDown");   // 获取番茄时钟元素
+    const countDown = document.getElementById("countDown");   // 获取倒计时元素
     const windowTime = document.getElementById("windowTime");     // 获取页面中显示时间的元素
     const windowDate = document.getElementById("windowDate");     // 获取页面中显示日期的元素
     var toolTimer;  // 存储工具类中计时器的循环事件
-    var toolCountDown;      // 存储工具类中番茄时钟的循环事件
+    var toolCountDown;      // 存储工具类中倒计时的循环事件
     var alertColor;     // 存储屏幕闪烁的循环事件
     var timerFlag = false;  // 计时器的工作状态
-    var countDownFlag = false;      // 番茄时钟的工作状态
-    var alertFlag = false;  // 提示函数的状态
+    var countDownFlag = false;      // 倒计时的工作状态
     var timerCount = 0;     // 计时器计数，以秒为单位
-    var countDownCount;     // 番茄时钟计数
-    var countH = 0, countM = 20, countS = 0;     // 番茄时钟时、分、秒设定值
+    var countDownCount;     // 倒计时计数
+    var countH = 0, countM = 20, countS = 0;     // 倒计时时、分、秒预设值
+    var customH = 0, customM = 20, customS = 0;     // 用户设定的倒计时时、分、秒值
     var weekArray = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];     // 存储星期的数组
     var refDate;    // 存储参考时间的变量
 
     window.addEventListener("selectstart", function(e) {e.preventDefault();})  // 整个页面禁止选中，提升使用体验
     windowTime.addEventListener("click", clearTimer)    // 单击日期重置计时器
-    windowDate.addEventListener("click", clearCountDown)    // 单击日期重置番茄时钟
+    windowDate.addEventListener("click", clearCountDown)    // 单击日期重置倒计时
     timer.addEventListener("click", setTimer);          // 给计时器添加鼠标点击事件监听器
-    countDown.addEventListener("click", startCountDown);     // 给番茄时钟添加鼠标点击事件监听器
-    controlMouseWheel(true);    // 调用函数为番茄时钟的时、分、秒span添加事件监听器
+    countDown.addEventListener("click", startCountDown);     // 给倒计时添加鼠标点击事件监听器
+    controlMouseWheel(true);    // 调用函数为倒计时的时、分、秒span添加事件监听器
 
     // 设定页面中显示时间的元素
     function setTime() {
@@ -67,25 +67,28 @@ window.onload = function() {
         timer.innerHTML = "00:00:00";
     }
 
-    // 设定番茄时钟的“时”
+    // 设定倒计时的“时”
     function setCountH() {
         countH = parseInt(setCountDown(countH));    // 将其转换为数字
+        customH = countH;   // 将用户设定的值保存起来
         document.getElementById("countH").innerText = fullTime(countH);     // 格式化之后替换到界面中
     }
 
-    // 设定番茄时钟的“分”
+    // 设定倒计时的“分”
     function setCountM() {
         countM = parseInt(setCountDown(countM));    // 将其转换为数字
+        customM = countM;   // 将用户设定的值保存起来
         document.getElementById("countM").innerText = fullTime(countM);     // 格式化之后替换到界面中
     }
 
-    // 设定番茄时钟的“秒”
+    // 设定倒计时的“秒”
     function setCountS() {
         countS = parseInt(setCountDown(countS));    // 将其转换为数字
+        customS = countS;   // 将用户设定的值保存起来
         document.getElementById("countS").innerText = fullTime(countS);     // 格式化之后替换到界面中
     }
 
-    // 设定番茄时钟的三个参数（时、分、秒）
+    // 设定倒计时的三个参数（时、分、秒）
     function setCountDown(data) {
         var e = e || window.event;
         if (e.detail > 0 || e.wheelDelta < 0) {     // 鼠标滚轮向下滚动，减少
@@ -103,20 +106,20 @@ window.onload = function() {
         return data;
     }
 
-    // 番茄时钟的函数：开始与暂停
+    // 倒计时的函数：开始与暂停
     function startCountDown() {
-        countDownFlag = !countDownFlag;     // 改变番茄时钟的状态
+        countDownFlag = !countDownFlag;     // 改变倒计时的状态
         countDownCount = countH * 3600 + countM * 60 + countS;     // 以秒为单位，计算总的秒数
         if (countDownCount == 0) {  // 当设定的时、分、秒都等于0时，退出函数
-            return 0;
+            return null;
         }
-        controlMouseWheel(false);   // 当番茄时钟启动后，移除番茄时钟时、分、秒span的事件监听器，禁止在此期间修改番茄时钟的时、分、秒
+        controlMouseWheel(false);   // 当倒计时启动后，移除倒计时时、分、秒span的事件监听器，禁止在此期间修改倒计时的时、分、秒
         if (countDownFlag) {
             toolCountDown = setInterval(() => {
                 countDownCount -= 1;
                 if (countDownCount == 0) {
-                    alertFlag = true;
-                    clearCountDown();
+                    alertCountDown(true);   // 调用计时结束后闪烁屏幕的函数
+                    clearInterval(toolCountDown);   // 停止倒计时
                 }
                 countH = fullTime(Math.floor(countDownCount / 3600));
                 countM = fullTime(Math.floor((countDownCount - (countH * 3600)) / 60));
@@ -130,21 +133,21 @@ window.onload = function() {
         }
     }
 
-    // 番茄时钟的函数：清空
+    // 倒计时的函数：清空
     function clearCountDown() {
-        countDownFlag = false;  // 修改番茄时钟的工作状态
-        clearInterval(toolCountDown);
-        alertCountDown();   // 调用计时结束后闪烁屏幕的函数
-        controlMouseWheel(true);   // 调用函数为番茄时钟的时、分、秒span添加事件监听器
+        countDownFlag = false;  // 修改倒计时的工作状态
+        clearInterval(toolCountDown);   // 停止倒计时
+        alertCountDown(false);   // 调用计时结束后闪烁屏幕的函数
+        controlMouseWheel(true);   // 调用函数为倒计时的时、分、秒span添加鼠标滚轮事件监听器
         // 恢复默认值
-        countH = 0, countM = 20, countS = 0;
-        document.getElementById("countH").innerText = "00";     // 页面中的“时”
-        document.getElementById("countM").innerText = "20";     // 页面中的“分”
-        document.getElementById("countS").innerText = "00";     // 页面中的“秒”
+        countH = customH, countM = customM, countS = customS;   // 将时、分、秒恢复为用户设定的值
+        document.getElementById("countH").innerText = fullTime(countH);     // 页面中的“时”
+        document.getElementById("countM").innerText = fullTime(countM);     // 页面中的“分”
+        document.getElementById("countS").innerText = fullTime(countS);     // 页面中的“秒”
     }
 
-    // 当番茄时钟计时结束，闪烁屏幕以提示
-    function alertCountDown() {
+    // 当倒计时计时结束，闪烁屏幕以提示
+    function alertCountDown(alertFlag) {
         var count = 0;
         if (alertFlag) {
             alertColor = setInterval(() => {
@@ -171,11 +174,11 @@ window.onload = function() {
             windowDate.style.color = "white";     // windowDate的字体颜色
             countDown.style.color = "white";    // countDown的字体颜色
         }
-        alertFlag = false;      // 恢复提示函数的状态
     }
 
     // 补全（格式化）时、分、秒
     function fullTime(data) {
+        data = parseInt(data);
         if (data / 10 < 1) {    // 为一位数时
             return "0" + data;
         } else {    // 为两位数时
@@ -183,20 +186,9 @@ window.onload = function() {
         }
     }
 
-    // 补全（格式化）毫秒：三位数
-    function fullMs(data) {
-        if (data == 0) {    // 毫秒为0时
-            return data + "00";
-        } else if (data / 100 < 1) {    // 毫秒为两位数时
-            return data + "0";
-        } else {    // 毫秒为三位数时
-            return data;
-        }
-    }
-
     function controlMouseWheel(flag) {
         if (flag) {
-            // 给番茄时钟添加鼠标滚轮事件监听器，火狐比较特殊
+            // 给倒计时添加鼠标滚轮事件监听器，火狐比较特殊
             document.getElementById("countH").addEventListener("mousewheel", setCountH);         // 非火狐
             document.getElementById("countH").addEventListener("DOMMouseScroll", setCountH);     // 火狐
             document.getElementById("countM").addEventListener("mousewheel", setCountM);         // 非火狐
@@ -204,7 +196,7 @@ window.onload = function() {
             document.getElementById("countS").addEventListener("mousewheel", setCountS);         // 非火狐
             document.getElementById("countS").addEventListener("DOMMouseScroll", setCountS);     // 火狐
         } else {
-            // 给番茄时钟添加鼠标滚轮事件监听器，火狐比较特殊
+            // 给倒计时添加鼠标滚轮事件监听器，火狐比较特殊
             document.getElementById("countH").removeEventListener("mousewheel", setCountH);         // 非火狐
             document.getElementById("countH").removeEventListener("DOMMouseScroll", setCountH);     // 火狐
             document.getElementById("countM").removeEventListener("mousewheel", setCountM);         // 非火狐
@@ -213,9 +205,6 @@ window.onload = function() {
             document.getElementById("countS").removeEventListener("DOMMouseScroll", setCountS);     // 火狐
         }
     }
-
-    // 刚进入界面时刷新日期
-    setDate();
 
     setInterval(setTime, 100);  // 设定自动刷新时间
 }
