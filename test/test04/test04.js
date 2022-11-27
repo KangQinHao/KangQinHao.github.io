@@ -26,6 +26,8 @@ window.onload = function() {
     function setTime() {
         refDate = new Date();
         windowTime.innerText = fullTime(refDate.getHours()) + ":" + fullTime(refDate.getMinutes()) + ":" + fullTime(refDate.getSeconds());
+        /* windowTime.innerText = refDate.toLocaleTimeString();
+        windowTime.style.fontSize = "12.7vw"; */
         setDate();
     }
 
@@ -33,6 +35,7 @@ window.onload = function() {
     function setDate() {
         refDate = new Date();
         windowDate.innerText = refDate.getFullYear() + "年" + (refDate.getMonth() + 1) + "月"+ refDate.getDate() + "日" + "  " + weekArray[refDate.getDay()];
+        // windowDate.innerText = refDate.toLocaleDateString() + "  " + weekArray[refDate.getDay()];
     }
 
     // 计时器的函数：开始和暂停
