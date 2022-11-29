@@ -70,21 +70,18 @@ window.onload = function() {
     // 设定倒计时的“时”
     function setCountH() {
         countH = parseInt(setCountDown(countH));    // 将其转换为数字
-        customH = countH;   // 将用户设定的值保存起来
         document.getElementById("countH").innerText = fullTime(countH);     // 格式化之后替换到界面中
     }
 
     // 设定倒计时的“分”
     function setCountM() {
         countM = parseInt(setCountDown(countM));    // 将其转换为数字
-        customM = countM;   // 将用户设定的值保存起来
         document.getElementById("countM").innerText = fullTime(countM);     // 格式化之后替换到界面中
     }
 
     // 设定倒计时的“秒”
     function setCountS() {
         countS = parseInt(setCountDown(countS));    // 将其转换为数字
-        customS = countS;   // 将用户设定的值保存起来
         document.getElementById("countS").innerText = fullTime(countS);     // 格式化之后替换到界面中
     }
 
@@ -115,6 +112,7 @@ window.onload = function() {
         }
         controlMouseWheel(false);   // 当倒计时启动后，移除倒计时时、分、秒span的事件监听器，禁止在此期间修改倒计时的时、分、秒
         if (countDownFlag) {
+            customH = countH, customM = countM, customS = countS;   // 将用户设定的值保存起来
             toolCountDown = setInterval(() => {
                 countDownCount -= 1;
                 if (countDownCount == 0) {
