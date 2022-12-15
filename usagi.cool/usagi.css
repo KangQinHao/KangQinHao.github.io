@@ -1,0 +1,59 @@
+:root {
+    font-family: 'Consolas', sans-serif;
+    font-size: 1.3vw;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+#container {
+    --scroll: 0;
+    height: 200vh;
+}
+
+.sticky {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sticky span {
+    line-height: 8rem;
+    font-size: 8rem;
+    font-weight: bold;
+    position: absolute;
+    color: #25c7d9;
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% calc((100 - 3 * var(--scroll)) * 1%),
+        0% calc((100 - 3 * var(--scroll)) * 1%)
+    );
+}
+
+.sticky span:nth-child(2) {
+    font-size: 5rem;
+    color: rgba(37, 199, 217, 0.5);
+    clip-path: polygon(
+        100% calc((100 - 3 * var(--scroll)) * 1%),
+        0% calc((100 - 3 * var(--scroll)) * 1%),
+        0% calc((100 - var(--scroll)) * 1%),
+        100% calc((100 - var(--scroll)) * 1%)
+    );
+}
+
+.sticky span:nth-child(3), span:nth-child(4) {
+    color: #f2762e;
+    clip-path: polygon(
+        100% 100%,
+        0% 100%,
+        0% calc((100 - var(--scroll)) * 1%),
+        100% calc((100 - var(--scroll)) * 1%)
+    );
+}
