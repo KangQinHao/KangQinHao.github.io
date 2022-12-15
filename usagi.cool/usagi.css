@@ -10,7 +10,7 @@ body {
 }
 
 #container {
-    --scroll: 0;
+    /* --scroll: 0; */
     height: 200vh;
 }
 
