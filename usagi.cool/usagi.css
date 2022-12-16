@@ -10,9 +10,16 @@
 
 body {
     min-height: 100vh;
+    overflow: hidden;
+    scrollbar-width: 0;     /* 隐藏滚动条 */
 }
 
-#loading {
+/* 隐藏滚动条 */
+::-webkit-scrollbar {
+    display: none;
+}
+
+.loading {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +32,7 @@ body {
     text-align: center;
 }
 
-#container {
+.container {
     --scroll: 0;
     height: 200vh;
 }
