@@ -13,15 +13,16 @@
 
             document.onreadystatechange = function () {
                 if (document.readyState == "complete") {    
-                    document.getElementById("loading-div").style.display = 'none';
+                    document.querySelector(".loading").style.display = 'none';
+                    document.body.style.overflow = 'scroll';
                 }
             }
         </script>
         <title>兎</title>
     </head>
     <body>
-        <div id="loading">Loading...</div>
-        <div id="container" tg-name="scroll" tg-from="0" tg-to="120" tg-step="0.2" tg-edge="inset" tg-ref="tgs" >
+        <div class="loading">Loading...</div>
+        <div class="container" tg-name="scroll" tg-from="0" tg-to="120" tg-step="0.2" tg-edge="inset" tg-ref="tgs" >
             <div class="sticky">
                 <span>WELCOME</span>
                 <span>LUCKY IS COMING</span>
