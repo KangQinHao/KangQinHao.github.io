@@ -6,12 +6,14 @@
 * {
     margin: 0px;
     padding: 0px;
+    cursor: default;
+    scrollbar-width: none;     /* 隐藏滚动条 */
 }
 
 body {
     min-height: 100vh;
     overflow: hidden;
-    scrollbar-width: 0;     /* 隐藏滚动条 */
+    font-weight: bold;
 }
 
 /* 隐藏滚动条 */
@@ -49,7 +51,6 @@ body {
 .sticky span {
     line-height: 8rem;
     font-size: 8rem;
-    font-weight: bold;
     position: absolute;
     color: #25c7d9;
     clip-path: polygon(
@@ -85,12 +86,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: black;
-    padding: 0.5rem;
+    background: #3F5F73;
+    font-family: 'KaiTi', Helvetica, sans-serif;
+    color: #F2E5A0;
+    padding: 0.4rem;
+}
+
+span {
+    margin: .2rem;
 }
 
 a {
     font-size: 1rem;
     text-decoration: none;
-    color: rgba(37, 199, 217);
+    cursor: pointer;
+    color: #F2E5A0;
 }
