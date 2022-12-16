@@ -12,6 +12,19 @@ body {
     min-height: 100vh;
 }
 
+#loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 1);
+    position: absolute;
+    z-index: 999;
+    height: 100%;
+    width: 100%;
+    font-size: 4vw;
+    text-align: center;
+}
+
 #container {
     --scroll: 0;
     height: 200vh;
@@ -51,8 +64,7 @@ body {
     );
 }
 
-.sticky span:nth-child(3),
-span:nth-child(4) {
+.sticky span:nth-child(3), span:nth-child(4) {
     color: #f2762e;
     clip-path: polygon(
         100% 100%,
