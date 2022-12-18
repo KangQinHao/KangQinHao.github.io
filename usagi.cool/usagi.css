@@ -7,18 +7,18 @@
     margin: 0px;
     padding: 0px;
     cursor: default;
-    scrollbar-width: none;     /* 隐藏滚动条 */
+    scrollbar-width: none; /* 隐藏滚动条 */
+}
+
+/* 隐藏滚动条 */
+::-webkit-scrollbar {
+    display: none;
 }
 
 body {
     min-height: 100vh;
     overflow: hidden;
     font-weight: bold;
-}
-
-/* 隐藏滚动条 */
-::-webkit-scrollbar {
-    display: none;
 }
 
 .loading {
@@ -72,7 +72,8 @@ body {
     );
 }
 
-.sticky span:nth-child(3), span:nth-child(4) {
+.sticky span:nth-child(3),
+span:nth-child(4) {
     color: #f2762e;
     clip-path: polygon(
         100% 100%,
@@ -86,19 +87,20 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #3F5F73;
+    background: #3f5f73;
+    font-size: 20px;
     font-family: 'KaiTi', Helvetica, sans-serif;
-    color: #F2E5A0;
-    padding: 0.4rem;
+    color: #f2e5a0;
+    padding: 8px;
 }
 
 span {
-    margin: .2rem;
+    margin: 4px;
 }
 
 a {
-    font-size: 1rem;
     text-decoration: none;
+    outline: none;
     cursor: pointer;
-    color: #F2E5A0;
+    color: #f2e5a0;
 }
