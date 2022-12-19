@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Kaisei+Opti:wght@700&family=Roboto+Mono:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/earlyaccess/cwtexkai.css');
+
 :root {
-    font-family: 'Consolas', Helvetica, sans-serif;
+    font-family: 'Roboto Mono', Arial, Helvetica, sans-serif;
     font-size: 1.3vw;
 }
 
@@ -7,10 +10,9 @@
     margin: 0px;
     padding: 0px;
     cursor: default;
-    scrollbar-width: none; /* 隐藏滚动条 */
+    scrollbar-width: none;
 }
 
-/* 隐藏滚动条 */
 ::-webkit-scrollbar {
     display: none;
 }
@@ -50,7 +52,7 @@ body {
 
 .sticky span {
     line-height: 8rem;
-    font-size: 8rem;
+    font-size: 7.5rem;
     position: absolute;
     color: #25c7d9;
     clip-path: polygon(
@@ -62,7 +64,7 @@ body {
 }
 
 .sticky span:nth-child(2) {
-    font-size: 5rem;
+    font-size: 4rem;
     color: rgba(37, 199, 217, 0.5);
     clip-path: polygon(
         100% calc((100 - 3 * var(--scroll)) * 1%),
@@ -89,9 +91,9 @@ span:nth-child(4) {
     align-items: center;
     background: #3f5f73;
     font-size: 20px;
-    font-family: 'KaiTi', Helvetica, sans-serif;
+    font-family: 'KaiTi', 'cwTeXKai';
     color: #f2e5a0;
-    padding: 8px;
+    padding: 6px;
 }
 
 span {
