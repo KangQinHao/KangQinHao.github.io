@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="../../images/logo.ico" />
+        <link rel="stylesheet" href="homework09.css" />
+        <title>第九次作业</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="information">
+                <div class="input-bar">
+                    用户名 <input id="username" type="text" placeholder="字母开头, 介于4~12, a-z, A-Z, 0-9, _" name="username" onblur="usernameCheck()" />
+                    <p id="messagea"><br /><br /><br /></p>
+                    <button id="show" onclick="showOrNot()">顯示</button>
+                    密码 <input id="passwd" type="password" placeholder="长度介于6~30, a-z, A-Z, 0-9, @&?!." onblur="passwordCheck()" />
+                    <p id="messageb"><br /><br /><br /></p>
+                    确认密码 <input id="passwdC" type="password" placeholder="请再次输入你的密码" name="password"  onblur="passwordCheck()" />
+                </div>
+            </div>
+            <button class="B" onclick="finalCheck()">注册</button>
+        </div>
+        <script>
+            const username = document.getElementById('username');
+            const passwd = document.getElementById('passwd');
+            const passwdC = document.getElementById('passwdC');
+            const messagea = document.getElementById('messagea');
+            const messageb = document.getElementById('messageb');
+            const buttonS = document.getElementById('show');
+            const comfirmA = /^[a-zA-Z]/;
+            const confirmB = /^[a-zA-Z0-9_]+$/;
+            const comfirmC = /^.{4,12}$/;
+            const comfirmD = /^[a-zA-Z][a-zA-Z0-9_]{4,12}$/;
+            const comfirmE = /^[a-zA-Z0-9@&?!.]+$/;
+            const comfirmF = /^.{6,30}$/;
+            var strA = '';
+            var strB = '';
+            var temp = '';
+            var count = 0;
+            var flag = false;
+
+            window.addEventListener('selectstart', function (e) {e.preventDefault();});
+
+            function usernameCheck() {
+                // 用户名检查
+                if (username.value.length == 0) {
+                    strA = strA + '用户名不能为空<br/>';
+                    count += 2;
+                } else {
+                    if (!comfirmA.test(username.value)) {
+                        strA = strA + '用户名应以字母开头<br/>';
+                    } else {
+                        count++;
+                    }
+                    if (!confirmB.test(username.value)) {
+                        strA = strA + '用户名应由a-z, A-Z, 0-9, _组成<br/>';
+                    } else {
+                        count++;
+                    }
+                    if (!comfirmC.test(username.value)) {
+                        strA = strA + '用户名的长度必须介于4~12<br/>';
+                    } else {
+                        count++;
+                    }
+                }
+
+                temp = temp + aaaa(strA);
+                messagea.innerHTML = temp;
+                (strA = ''), (temp = ''), (count = 0);
+            }
+
+            function passwordCheck() {
+                // 密码检查
+                if (passwd.value.length == 0 || passwdC.value.length == 0) {
+                    strB = strB + '密码不能为空<br/>';
+                    count += 2;
+                } else {
+                    if (!comfirmE.test(passwd.value)) {
+                        strB = strB + '密码应由a-z, A-Z, 0-9, @&?!.组成<br/>';
+                    } else {
+                        count++;
+                    }
+                    if (!comfirmF.test(passwd.value)) {
+                        strB = strB + '密码的长度应介于6~30<br/>';
+                    } else {
+                        count++;
+                    }
+                    if (!(passwd.value === passwdC.value)) {
+                        strB = strB + '两次输入的密码不一致<br/>';
+                    } else {
+                        count++;
+                    }
+                }
+
+                temp = temp + aaaa(strB);
+                messageb.innerHTML = temp;
+
+                (strB = ''), (temp = ''), (count = 0);
+            }
+
+            function finalCheck() {
+                if (strA.length == 0 && strB.length == 0) {
+                    alert('注册成功！');
+                }
+            }
+
+            function aaaa(data) {
+                if (count == 1) {
+                    return (data = data + '<br/>');
+                }
+                if (count == 2) {
+                    return (data = data + '<br/><br/>');
+                }
+                if (count == 3) {
+                    return (data = data + '<br/><br/><br/>');
+                }
+                return data;
+            }
+
+            function showOrNot() {
+                if (flag) {
+                    show.innerText = '顯示';
+                    passwd.type = 'password';
+                    passwdC.type = 'password';
+                } else {
+                    show.innerText = '隱藏';
+                    passwd.type = 'text';
+                    passwdC.type = 'text';
+                }
+                flag = !flag;
+            }
+        </script>
+    </body>
+</html>
