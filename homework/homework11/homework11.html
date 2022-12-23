@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../../images/logo.ico" />
+    <style>
+        #name, #password {
+            width: 200px;
+        }
+    </style>
     <title>第十一次作业</title>
 </head>
 <body>
     <form action="#" method="get">
-            姓名 <input id="name" type="text" onblur="nameCheck()"><span id="nameAlert"></span><br>
+            姓名 <input id="name" type="text" onblur="nameCheck()" placeholder="汉字，字母，数字，长度大于2"><span id="nameAlert"></span><br>
             密码 <input id="password" type="password" onblur="passwordCheck()"><span id="passwdAlert"></span><br>
             性别 <label><input id="gender" type="radio" name="gender" value="male">男</label> <label><input id="gender" type="radio" name="gender" value="female">女</label> <label><input id="gender" type="radio" name="gender" value="secret" checked>保密</label> <br>
             血型 <label><input type="radio" name="bType" value="o" checked>O</label> <label><input type="radio" name="bType" value="a">A</label> <label><input type="radio" name="bType" value="b">B</label> <label><input type="radio" name="bType" value="ab">AB</label> <br>
             性格 <label><input type="checkbox" name="bType" value="rqdf">热情大方</label> <label><input type="checkbox" name="bType" value="wrtt">温柔体贴</label> <label><input type="checkbox" name="bType" value="dqsg">多情善感</label> <label><input type="checkbox" name="bType" value="dxbt" checked>不想表态</label> <br>
-            文件 <input type="file" value="浏览" /> <br>
+            文件 <input type="file"> <br>
             简介 <input type="text" name="shortInter" value="这个人很懒，什么都没写..."> <br>
             城市 <select name="city" id="city">
                     <option value="beijing" >北京市</option>
@@ -23,19 +27,24 @@
                     <option value="shenzhen">深圳市</option>
                 </select> <br>
         </div>
-        <input type="submit" value="提交" onclick="finalCheck()" /><input type="reset" value="重置" />
+        <input id="submit" type="submit" disabled><input type="reset" />
     </form>
     <script>
         const name = document.getElementById('name');
         const passwd = document.getElementById('password');
         const nameAlert = document.getElementById('nameAlert');
         const passwdAlert = document.getElementById('passwdAlert');
+        const submit = document.getElementById('submit');
+        const comfirmA = /^[a-zA-Z0-9\u4e00-\u9fa5]{2,}$/;
         var strA = '';
         var strB = '';
 
         function nameCheck() {
             if (name.value.length == 0) {
                 strB = strB + '姓名不能为空。';
+            }
+            if (!comfirmA.test(name.value)) {
+                strB = strB + '名字不符合标准。';
             }
             nameAlert.innerText = strB;
             strB = '';
@@ -55,14 +64,12 @@
         finalCheck = function() {
             if (name.value.length != 0) {
                 if (passwd.value.length != 0 && passwd.value.length >= 6) {
-                    // do nothing
-                } else {
-                    alert('请按照提示填写必要信息');
+                    submit.removeAttribute('disabled');
                 }
-            } else {
-                alert('请按照提示填写必要信息');
             }
         }
+
+        setInterval(finalCheck, 1000);
     </script>
 </body>
 </html>
