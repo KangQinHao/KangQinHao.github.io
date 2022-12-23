@@ -101,8 +101,14 @@
             }
 
             function finalCheck() {
-                if (strA.length == 0 && strB.length == 0) {
-                    alert('注册成功！');
+                if (username.value.length != 0 && comfirmA.test(username.value) && confirmB.test(username.value) && comfirmC.test(username.value)) {
+                    if (passwd.value.length != 0 && passwdC.value.length != 0 && comfirmE.test(passwd.value) && comfirmF.test(passwd.value) && (passwd.value === passwdC.value)) {
+                        alert('注册成功！');
+                    } else {
+                        alert('请按提示完善必要信息！');
+                    }
+                } else {
+                        alert('请按提示完善必要信息！');
                 }
             }
 
