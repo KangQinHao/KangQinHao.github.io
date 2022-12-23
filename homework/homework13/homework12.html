@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html {
+            height: 100%;
+            background-image: url(images/image01.jpg);
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: space-around;
+        }
+
+        .box1, .box2, .box3, .box4 {
+            margin: 50px;;
+            height: 200px;
+            width: 200px;
+            background-color: rgba(250, 128, 114);
+        }
+    </style>
+    <title>第十三次作业</title>
+</head>
+<body>
+    <input id="textA" type="text" onblur="alertInput()">
+    <div class="container">
+        <div class="box1" onmouseover="alertMouse()">鼠标悬浮</div>
+        <div class="box2" onmouseenter="alertMouse()">鼠标进入</div>
+        <div class="box3" onmousedown="alertMouse()">鼠标点击</div>
+        <div class="box4" onmouseout="alertMouse()">鼠标移开</div>
+    </div>
+    <script>
+        const textA = document.getElementById('textA');
+
+        function alertMouse() {
+            alert('鼠标事件');
+        }
+
+        function alertInput() {
+            if (textA.value.length == 0) {
+                alert('不写点什么吗？');
+            } else {
+                alert(textA.value + ' 是不是你写的？');
+            }
+        }
+    </script>
+</body>
+</html>
