@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第十次作业</title>
+</head>
+<body>
+    <input id="original" type="text" placeholder="源文本">
+    <button onclick="copyNow()">复制</button>
+    <input id="copy" type="text" placeholder="复制文本">
+    <div id="alertText"></div>
+    <script>
+        const original = document.getElementById('original');
+        const copy = document.getElementById('copy');
+        const alertText = document.getElementById('alertText');
+
+        copyNow = function() {
+            if (original.value.length == 0) {
+                alertText.innerText = '什么都没有发生，要不填点东西试试？';
+            } else {
+                copy.value = original.value;
+                alertText.innerText = '复制成功';
+            }
+        }
+    </script>
+</body>
+</html>
