@@ -17,7 +17,7 @@
                     <button id="show" onclick="showOrNot()">顯示</button>
                     密码 <input id="passwd" type="password" placeholder="长度介于6~30, a-z, A-Z, 0-9, @&?!." onblur="passwordCheck()" />
                     <p id="messageb"><br /><br /><br /></p>
-                    确认密码 <input id="passwdC" type="password" placeholder="请再次输入你的密码" name="password"  onblur="passwordCheck()" />
+                    确认密码 <input id="passwdC" type="password" placeholder="请再次输入你的密码" name="password"  onblur="passwordCCheck()" />
                     <p id="messagec"><br /></p>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                     count += 2;
                 } else {
                     if (!comfirmE.test(passwd.value)) {
-                        strB = strB + '密码必须包含大写字母、小写字母和数字，可加入@&?!.<br/>';
+                        strB = strB + '密码必须包含大写字母、小写字母和数字<br/>';
                     } else {
                         count++;
                     }
@@ -99,7 +99,7 @@
                 (strB = ''), (temp = ''), (count = 0);
             }
 
-            function passwdCCheck() {
+            function passwordCCheck() {
                 if (!(passwd.value === passwdC.value)) {
                     strC = strC + '两次输入的密码不一致<br/>';
                 } else {
