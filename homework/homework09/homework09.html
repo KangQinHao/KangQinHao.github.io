@@ -18,6 +18,7 @@
                     密码 <input id="passwd" type="password" placeholder="长度介于6~30, a-z, A-Z, 0-9, @&?!." onblur="passwordCheck()" />
                     <p id="messageb"><br /><br /><br /></p>
                     确认密码 <input id="passwdC" type="password" placeholder="请再次输入你的密码" name="password"  onblur="passwordCheck()" />
+                    <p id="messagec"><br /></p>
                 </div>
             </div>
             <button class="B" onclick="finalCheck()">注册</button>
@@ -28,15 +29,17 @@
             const passwdC = document.getElementById('passwdC');
             const messagea = document.getElementById('messagea');
             const messageb = document.getElementById('messageb');
+            const messagec = document.getElementById('messagec');
             const buttonS = document.getElementById('show');
             const comfirmA = /^[a-zA-Z]/;
             const confirmB = /^[a-zA-Z0-9_]+$/;
             const comfirmC = /^.{4,12}$/;
             const comfirmD = /^[a-zA-Z][a-zA-Z0-9_]{4,12}$/;
-            const comfirmE = /^[a-zA-Z0-9@&?!.]+$/;
+            const comfirmE = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9@&?!.]+$/;
             const comfirmF = /^.{6,30}$/;
             var strA = '';
             var strB = '';
+            var strC = '';
             var temp = '';
             var count = 0;
             var flag = false;
@@ -73,12 +76,12 @@
 
             function passwordCheck() {
                 // 密码检查
-                if (passwd.value.length == 0 || passwdC.value.length == 0) {
+                if (passwd.value.length == 0) {
                     strB = strB + '密码不能为空<br/>';
                     count += 2;
                 } else {
                     if (!comfirmE.test(passwd.value)) {
-                        strB = strB + '密码应由a-z, A-Z, 0-9, @&?!.组成<br/>';
+                        strB = strB + '密码必须包含大写字母、小写字母和数字，可加入@&?!.<br/>';
                     } else {
                         count++;
                     }
@@ -87,17 +90,26 @@
                     } else {
                         count++;
                     }
-                    if (!(passwd.value === passwdC.value)) {
-                        strB = strB + '两次输入的密码不一致<br/>';
-                    } else {
-                        count++;
-                    }
+                    count++;
                 }
 
                 temp = temp + aaaa(strB);
                 messageb.innerHTML = temp;
 
                 (strB = ''), (temp = ''), (count = 0);
+            }
+
+            function passwdCCheck() {
+                if (!(passwd.value === passwdC.value)) {
+                    strC = strC + '两次输入的密码不一致<br/>';
+                } else {
+                    count++;
+                }
+
+                temp = temp + aaaa(strC);
+                messagec.innerHTML = temp;
+
+                (strC = ''), (temp = ''), (count = 0);
             }
 
             function finalCheck() {
