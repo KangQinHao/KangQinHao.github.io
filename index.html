@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width"/>
+        <script type="module" src="index.js"></script>
+        <link rel="stylesheet" href="index.css">
+        <script src="https://webapi.amap.com/loader.js"></script>
+        <title>Map-API-L</title>
+    </head>
+    <body>
+        <div id="mapContainer">
+            <div id="bar">
+                <div id="searchBar">
+                    <input id="type" type="text" placeholder="输入目的地">
+                    <button id="search">s</button>
+                </div>
+                <div id="switchBar">
+                    <div class="elem">模式</div>
+                    <button name="choice" class="elem" id="Traffic" value="false">路况</button>
+                    <button name="choice" class="elem" id="Satellite" value="false">卫星</button>
+                </div>
+            </div>
+            <!-- <div id="panel"></div> -->
+        </div>
+    </body>
+</html>
