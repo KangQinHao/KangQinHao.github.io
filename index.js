@@ -67,6 +67,8 @@ AMapLoader.load({
                 zoomToAccuracy: true, // 定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
                 position: "RB", // 定位按钮的排放位置,  RB表示右下
                 showMarker: true, // 定位标点
+                showCircle: false,
+                noIpLocate: 0, // 允许使用 IP 定位
                 needAddress: true, // 精确位置
             });
 
